@@ -1,12 +1,9 @@
 import axios from 'axios';
 import React from 'react';
 
-const WishListRow = ({book}) => {
+const WishListRow = ({handleDelete,book}) => {
     const{location,guide,hotel,cover,_id,phone}=book;
-    const handleDelete = _id=>{
-        axios.delete(`http://localhost:5000/book/${_id}`)
-        .then(res=>console.log(res.data))
-    }
+    
     return (
         <tr>
 

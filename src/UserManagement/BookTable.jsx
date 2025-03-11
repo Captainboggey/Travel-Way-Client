@@ -1,7 +1,11 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState } from 'react';
 
-const BookTable = ({book}) => {
-      const {firstName,location,email}=book;
+const BookTable = ({book,handleUpdate}) => {
+      const {firstName,location,email,_id,status}=book;
+      
+      console.log(book)
+      
     return (
         
             <tr>
@@ -10,7 +14,10 @@ const BookTable = ({book}) => {
                 
                 <td>{location}</td>
                 <td>{email}</td>
-                <button className='btn btn-primary bg-yellow-200 border-none'>Confirm</button>
+                {
+                    status==='confirm'?<button  className='btn btn-primary bg-green-600 border-none'>Confirmed</button>:<button  onClick={()=> handleUpdate(_id)} className='btn btn-primary bg-yellow-200 border-none'>Please Confirm</button>
+                }
+              
             </tr>
        
     );

@@ -12,7 +12,16 @@ const WishList = () => {
         axios.get(url)
             .then(res => setBooks(res.data))
     }, [])
-    console.log(books)
+    // console.log(books)
+    const handleDelete = _id=>{
+        axios.delete(`http://localhost:5000/book/${_id}`)
+        .then(res=>{
+            if(res.data.deletedCount>0){
+               const newBooks= books.filter(book=> book._id !== _id)
+               setBooks(newBooks)
+            }
+        })
+    }
 
     return (
         <div>
@@ -36,7 +45,7 @@ const WishList = () => {
                     <tbody>
                         {/* row 1 */}
                        {
-                        books.map(book=><WishListRow book={book} key={book._id}></WishListRow>)
+                        books.map(book=><WishListRow handleDelete={handleDelete} book={book} key={book._id}></WishListRow>)
                        }
                     </tbody>
                    
