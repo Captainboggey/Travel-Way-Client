@@ -21,6 +21,7 @@ import Tours from './Pages/Tours/Tours.jsx';
 import Hotels from './Pages/Hotels/Hotels.jsx';
 import Book from './Pages/Book/Book.jsx';
 import BookAdmin from './UserManagement/BookAdmin.jsx';
+import WishList from './Pages/WishList/WishList.jsx';
 
 const router = createBrowserRouter([
   {
@@ -74,6 +75,9 @@ const router = createBrowserRouter([
       element:<BookAdmin></BookAdmin>,
       loader: ()=> fetch('http://localhost:5000/book')
 
+    },{
+      path: '/wish',
+      element:<PrivateRoute><WishList></WishList></PrivateRoute>
     }]
   },
 ]);

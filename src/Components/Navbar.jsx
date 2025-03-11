@@ -15,12 +15,10 @@ const Navbar = () => {
     <Link to={'/'}><li><h2>Home</h2></li></Link>
     <Link to={"/tours"}><li><h2>Tours</h2></li></Link>
     <Link to={'/hotels'}><li><h2>Hotels</h2></li></Link>
-    {
-      user ?  <Link><li><h2>Profile</h2></li></Link>: ''
-    }
+    
   
     {
-      user ?  <Link><li><h2>Wishlist</h2></li></Link>: ''
+      user ?  <Link to={'/wish'}><li><h2>Wishlist</h2></li></Link>: ''
     }
     {
       user ? <Link to={'/usermanagement'}><li><h2>Admin Panel</h2></li></Link>: ''

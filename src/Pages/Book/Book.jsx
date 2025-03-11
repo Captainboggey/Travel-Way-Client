@@ -11,8 +11,12 @@ const Book = () => {
   const email = user?.email;
   console.log(email)
     const tourData=useLoaderData();
-    // console.log(email)
+    console.log(tourData)
     const location = tourData.tour_location;
+    const guide = tourData.guide_name;
+    const managerContact = tourData.tour_manager_contact;
+    const hotel = tourData.hotel_name;
+    const cover = tourData.tour_cover_photo;
     const handleBook = e=>{
         e.preventDefault()
         const form = e.target;
@@ -20,7 +24,7 @@ const Book = () => {
         const lastName = form.lastName.value;
         const phone = form.phone.value;
        
-        const bookingData = {firstName,lastName,phone,location,email};
+        const bookingData = {firstName,lastName,phone,location,email,guide,managerContact,hotel,cover};
         axios.post('http://localhost:5000/book',bookingData)
         .then(res=>{
           console.log(res.data)
