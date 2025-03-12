@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import UserManagementNavbar from './UserManagementNavbar';
 import { useLoaderData } from 'react-router-dom';
 import BookTable from './BookTable';
@@ -6,9 +6,13 @@ import axios from 'axios';
 import PrivateRoute from '../Routes/PrivateRoute';
 
 const BookAdmin = () => {
-    const LoadBooking = useLoaderData();
-    const [bookings,setBookings]=useState(LoadBooking)
+    // const [LoadBooking,setLoadBooking] = useState([])
+    const [bookings,setBookings]=useState([])
     // console.log(bookings)
+    useEffect(()=>{
+        axios.get('http://localhost:5000/book',{withCredentials:true})
+        .then(res=>setBookings(res.data))
+    },[])
     const update = ({status:"confirm"})
       const handleUpdate = (_id)=>{
         axios.patch(`http://localhost:5000/book/${_id}`,update)

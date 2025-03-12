@@ -73,7 +73,7 @@ const router = createBrowserRouter([
     },{
       path:"/bookAdmin",
       element:<PrivateRoute><BookAdmin></BookAdmin></PrivateRoute>,
-      loader: ()=> fetch('http://localhost:5000/book')
+      // loader: ()=> fetch('http://localhost:5000/book')
 
     },{
       path: '/wish',

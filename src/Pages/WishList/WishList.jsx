@@ -9,7 +9,7 @@ const WishList = () => {
     const { user } = useContext(AuthContext)
     const url = `http://localhost:5000/book?email=${user?.email}`
     useEffect(() => {
-        axios.get(url)
+        axios.get(url,{withCredentials:true})
             .then(res => setBooks(res.data))
     }, [])
     // console.log(books)
